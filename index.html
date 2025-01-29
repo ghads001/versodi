@@ -1,0 +1,208 @@
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VersoDiário - Plataforma de Estudo Bíblico</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.2.31/dist/vue.global.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+    }
+    .feature-card {
+      transition: all 0.3s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div id="app" class="min-h-screen flex flex-col">
+    <header class="bg-blue-600 text-white shadow-md">
+      <nav class="container mx-auto px-6 py-3">
+        <div class="flex items-center justify-between">
+          <div class="text-2xl font-bold">
+            VersoDiário
+          </div>
+          <div class="hidden md:flex space-x-4">
+            <a href="/" class="hover:text-blue-200 transition">Início</a>
+            <a href="/estudo" class="hover:text-blue-200 transition">Estudo</a>
+            <a href="/planos" class="hover:text-blue-200 transition">Planos de Leitura</a>
+            <a href="/comunidade" class="hover:text-blue-200 transition">Comunidade</a>
+            <a href="/perfil" class="hover:text-blue-200 transition">Perfil</a>
+          </div>
+          <div class="md:hidden">
+            <button @click="toggleMenu" class="focus:outline-none">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+        <div v-show="mobileMenuOpen" class="md:hidden mt-3">
+          <a href="/" class="block py-2 hover:text-blue-200 transition">Início</a>
+          <a href="/estudo" class="block py-2 hover:text-blue-200 transition">Estudo</a>
+          <a href="/planos" class="block py-2 hover:text-blue-200 transition">Planos de Leitura</a>
+          <a href="/comunidade" class="block py-2 hover:text-blue-200 transition">Comunidade</a>
+          <a href="/perfil" class="block py-2 hover:text-blue-200 transition">Perfil</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-grow">
+      <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+          <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">Bem-vindo ao VersoDiário</h1>
+          <p class="text-xl text-center text-gray-600 mb-12">Sua plataforma completa para estudo bíblico profundo e significativo.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="feature-card bg-blue-50 rounded-lg p-6">
+              <i class="fas fa-book-open text-4xl text-blue-600 mb-4"></i>
+              <h3 class="text-xl font-semibold mb-2">Cursos Bíblicos</h3>
+              <p class="text-gray-600 mb-4">Acesse uma variedade de cursos ministrados por especialistas renomados.</p>
+              <a href="/cursos" class="text-blue-600 hover:text-blue-800 font-semibold">Explorar Cursos</a>
+            </div>
+            <div class="feature-card bg-green-50 rounded-lg p-6">
+              <i class="fas fa-calendar-alt text-4xl text-green-600 mb-4"></i>
+              <h3 class="text-xl font-semibold mb-2">Planos de Leitura</h3>
+              <p class="text-gray-600 mb-4">Siga planos personalizados para ler a Bíblia de forma consistente.</p>
+              <a href="/planos" class="text-green-600 hover:text-green-800 font-semibold">Ver Planos</a>
+            </div>
+            <div class="feature-card bg-yellow-50 rounded-lg p-6">
+              <i class="fas fa-users text-4xl text-yellow-600 mb-4"></i>
+              <h3 class="text-xl font-semibold mb-2">Comunidade</h3>
+              <p class="text-gray-600 mb-4">Conecte-se com outros estudantes e participe de discussões enriquecedoras.</p>
+              <a href="/comunidade" class="text-yellow-600 hover:text-yellow-800 font-semibold">Participar</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+          <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Recursos em Destaque</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white rounded-lg shadow-md p-6">
+              <h3 class="text-xl font-semibold mb-4">Verso do Dia</h3>
+              <p class="text-gray-600 mb-4">"Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna." - João 3:16</p>
+              <a href="/versodiario" class="text-blue-600 hover:text-blue-800 font-semibold">Mais Versos</a>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+              <h3 class="text-xl font-semibold mb-4">Estudo da Semana</h3>
+              <p class="text-gray-600 mb-4">Explore o Sermão do Monte: Uma análise profunda dos ensinamentos de Jesus em Mateus 5-7.</p>
+              <a href="/estudo-semanal" class="text-blue-600 hover:text-blue-800 font-semibold">Ler Estudo</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 bg-blue-600 text-white">
+        <div class="container mx-auto px-6 text-center">
+          <h2 class="text-3xl font-bold mb-8">Comece sua jornada de aprendizado hoje</h2>
+          <p class="text-xl mb-8">Junte-se a milhares de estudantes apaixonados pela Palavra de Deus.</p>
+          <a href="/cadastro" class="bg-white text-blue-600 hover:bg-blue-100 font-bold py-3 px-6 rounded-full text-lg transition duration-300 inline-block">Criar Conta Gratuita</a>
+        </div>
+      </section>
+
+      <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+          <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">O que dizem nossos usuários</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-gray-50 rounded-lg p-6">
+              <p class="text-gray-600 mb-4">"O VersoDiário transformou minha vida espiritual. Os estudos são profundos e os planos de leitura me ajudaram a criar o hábito da leitura diária da Bíblia."</p>
+              <p class="font-semibold">- Maria S., Estudante</p>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-6">
+              <p class="text-gray-600 mb-4">"Como pastor, encontro recursos valiosos para meus sermões e estudos pessoais. A comunidade é incrível para trocar ideias e aprender com outros."</p>
+              <p class="font-semibold">- Pr. João R., Pastor</p>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-6">
+              <p class="text-gray-600 mb-4">"Os cursos são de altíssima qualidade. Aprendi tanto sobre hermenêutica e contexto histórico que minha compreensão da Bíblia melhorou significativamente."</p>
+              <p class="font-semibold">- Ana C., Professora de Escola Dominical</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+          <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Recursos Adicionais</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white rounded-lg shadow p-6">
+              <h3 class="text-xl font-semibold mb-2">Biblioteca Digital</h3>
+              <p class="text-gray-600 mb-4">Acesse uma vasta coleção de livros, comentários e recursos teológicos.</p>
+              <a href="/biblioteca" class="text-blue-600 hover:text-blue-800 font-semibold">Explorar Biblioteca</a>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6">
+              <h3 class="text-xl font-semibold mb-2">Fórum de Discussão</h3>
+              <p class="text-gray-600 mb-4">Participe de debates teológicos e troque ideias com outros estudantes.</p>
+              <a href="/forum" class="text-blue-600 hover:text-blue-800 font-semibold">Acessar Fórum</a>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6">
+              <h3 class="text-xl font-semibold mb-2">Podcasts</h3>
+              <p class="text-gray-600 mb-4">Ouça sermões, estudos e reflexões bíblicas em áudio.</p>
+              <a href="/podcasts" class="text-blue-600 hover:text-blue-800 font-semibold">Ouvir Podcasts</a>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6">
+              <h3 class="text-xl font-semibold mb-2">Mapas Bíblicos</h3>
+              <p class="text-gray-600 mb-4">Explore a geografia bíblica com mapas interativos detalhados.</p>
+              <a href="/mapas" class="text-blue-600 hover:text-blue-800 font-semibold">Ver Mapas</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-wrap justify-between">
+          <div class="w-full md:w-1/4 mb-6 md:mb-0">
+            <h3 class="text-xl font-semibold mb-2">VersoDiário</h3>
+            <p class="text-gray-400">Aprofundando seu conhecimento bíblico diariamente.</p>
+          </div>
+          <div class="w-full md:w-1/4 mb-6 md:mb-0">
+            <h4 class="text-lg font-semibold mb-2">Links Rápidos</h4>
+            <ul>
+              <li><a href="/sobre" class="text-gray-400 hover:text-white">Sobre Nós</a></li>
+              <li><a href="/contato" class="text-gray-400 hover:text-white">Contato</a></li>
+              <li><a href="/termos" class="text-gray-400 hover:text-white">Termos de Uso</a></li>
+              <li><a href="/privacidade" class="text-gray-400 hover:text-white">Política de Privacidade</a></li>
+            </ul>
+          </div>
+          <div class="w-full md:w-1/4 mb-6 md:mb-0">
+            <h4 class="text-lg font-semibold mb-2">Siga-nos</h4>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+              <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+          <div class="w-full md:w-1/4">
+            <h4 class="text-lg font-semibold mb-2">Newsletter</h4>
+            <form @submit.prevent="subscribeNewsletter" class="flex">
+              <input type="email" v-model="newsletterEmail" placeholder="Seu e-mail" class="py-2 px-3 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-600 flex-grow text-gray-800">
+              <button type="submit" class="bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded-r-lg transition duration-300">Assinar</button>
+            </form>
+          </div>
+        </div>
+        <div class="mt-8 text-center text-gray-400">
+          <p>&copy; 2024 VersoDiário. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          mobileMenuOpen: false,
+          newsletterEmail: ''
+        }
+      },
+      methods: {
+        toggleMenu() {
+          this.mobileMenuOpen = !this.mobileMenuOpen;
+        },
+        subscribeNewsletter() {
+          console.log('Inscrito
